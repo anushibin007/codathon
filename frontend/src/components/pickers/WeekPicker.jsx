@@ -19,23 +19,18 @@ const WeekPicker = ({ selectedSeason, selectedWeek, setSelectedWeek }) => {
 		<>
 			{selectedSeason && numberOfWeeks > 0 && (
 				<>
-					Week:
-					<>
-						<ToggleButtonGroup
-							value={selectedWeek}
-							onChange={(event, newValue) => {
-								setSelectedWeek(newValue);
-							}}
-						>
-							{Array.from(Array(numberOfWeeks).keys()).map((aWeek) => (
-								<Button key={aWeek + 1} value={aWeek + 1}>
-									{aWeek + 1}
-								</Button>
-							))}
-						</ToggleButtonGroup>
-					</>
-					Selected Week: {selectedWeekData?.id} ({selectedWeekData?.startDate} -{" "}
-					{selectedWeekData?.endDate})
+					<ToggleButtonGroup
+						value={selectedWeek}
+						onChange={(event, newValue) => {
+							setSelectedWeek(newValue);
+						}}
+					>
+						{Array.from(Array(numberOfWeeks).keys()).map((aWeek) => (
+							<Button key={aWeek + 1} value={aWeek + 1}>
+								Week {aWeek + 1}
+							</Button>
+						))}
+					</ToggleButtonGroup>
 				</>
 			)}
 		</>

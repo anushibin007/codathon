@@ -1,5 +1,5 @@
-import { act, useEffect, useState } from "react";
-import Typography from "@mui/joy/Typography";
+import { useEffect, useState } from "react";
+import Grid from "@mui/joy/Grid";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import { getAllSeasons } from "../../util/seasonaggregator";
@@ -25,20 +25,26 @@ const SeasonPicker = ({ selectedSeason, setSelectedSeason, selectedWeek, setSele
 	return (
 		<>
 			<form>
-				<Typography>Season: </Typography>
-				<Select onChange={handleSeasonChange}>
-					{allSeasons?.map((aSeason) => (
-						<Option key={aSeason.id} value={aSeason.id}>
-							{`Season ${aSeason.id} - ${aSeason.topic}`}
-						</Option>
-					))}
-				</Select>
-				Selected season: {selectedSeason?.id} - {selectedSeason?.topic}
-				<WeekPicker
-					selectedSeason={selectedSeason}
-					selectedWeek={selectedWeek}
-					setSelectedWeek={setSelectedWeek}
-				/>
+				<Grid container spacing={2}>
+					<Grid>
+						<Select onChange={handleSeasonChange} placeholder={`Pick a Season`}>
+							{allSeasons?.map((aSeason) => (
+								<Option key={aSeason.id} value={aSeason.id}>
+									{`Season ${aSeason.id} - ${aSeason.topic}`}
+								</Option>
+							))}
+						</Select>
+					</Grid>
+					<Grid>
+						<Grid>
+							<WeekPicker
+								selectedSeason={selectedSeason}
+								selectedWeek={selectedWeek}
+								setSelectedWeek={setSelectedWeek}
+							/>
+						</Grid>
+					</Grid>
+				</Grid>
 			</form>
 		</>
 	);

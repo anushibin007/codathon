@@ -1,3 +1,6 @@
+-   [ ] Add website header & footer
 -   [ ] Show aggregated score for the season
 -   [ ] Show active and inactive seasons in the UI somehow
 -   [ ] Show dates of Season and Weeks
+-   [ ] Add shareable champion score card that can be shared on social media
+-   [ ] Add code-of-the-week section

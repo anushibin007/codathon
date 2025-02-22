@@ -13,6 +13,9 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			const tempCategories = await getParticipants(selectedSeason, selectedWeek);
 			console.log({ tempCategories });
 			if (!tempSeries || !tempCategories) {
+				// reset the states if we got no data
+				setSeries(undefined);
+				setCategories(undefined);
 				return;
 			}
 			setSeries(tempSeries);
@@ -64,11 +67,20 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			horizontalAlign: "center",
 		},
 	};
+
+	const shouldRenderChart = () => {
+		return selectedSeason && selectedWeek && series;
+	};
 	return (
 		<>
-			{selectedSeason && selectedWeek && series && (
+			{shouldRenderChart() && (
 				<>
 					<Chart options={options} series={series} type="bar" height={350} />
+				</>
+			)}
+			{!shouldRenderChart() && (
+				<>
+					<p>No data for selected season and week</p>
 				</>
 			)}
 		</>

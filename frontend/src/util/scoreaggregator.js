@@ -21,7 +21,7 @@ const getParticipants = async (selectedSeason, selectedWeek) => {
 const getWeeklySeries = async (selectedSeason, selectedWeek) => {
 	if (!selectedSeason || !selectedWeek) return undefined;
 	const weeklyscore = await getWeeklyScore(selectedSeason, selectedWeek);
-	console.log({ weeklyscore });
+	// console.log({ weeklyscore });
 	if (!weeklyscore) return undefined;
 	const weeklySeries = criteria.map((criterion, index) => ({
 		name: criterion,
@@ -29,7 +29,7 @@ const getWeeklySeries = async (selectedSeason, selectedWeek) => {
 			person.score ? Math.ceil(person.score[index] * weight[index]) : 0
 		),
 	}));
-	console.log({ weeklySeries });
+	// console.log({ weeklySeries });
 	return weeklySeries;
 };
 

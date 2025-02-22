@@ -40,7 +40,7 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			stacked: true, // Enable stacking
 		},
 		title: {
-			text: "Season 1 Week 1 Results",
+			text: `Season ${selectedSeason?.id} Week ${selectedWeek} Results`,
 		},
 
 		dataLabels: {

@@ -1,0 +1,1 @@
+-   [ ] Show aggregated score for the season

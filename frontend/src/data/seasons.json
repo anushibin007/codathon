@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"topic": "Scuba Diving",
+		"weeks": [
+			{
+				"id": 1,
+				"startDate": "17-Feb-2025",
+				"endDate": "23-Feb-2025"
+			},
+			{
+				"id": 2
+			},
+			{
+				"id": 3
+			},
+			{
+				"id": 4
+			}
+		],
+		"isActive": true
+	}
+]

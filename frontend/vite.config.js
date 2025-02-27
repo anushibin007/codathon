@@ -1,11 +1,14 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 
-const BASE_PATH = process.env.VITE_BASE_PATH || "/codathon/";
+export default defineConfig(({ mode }) => {
+	const env = loadEnv(mode, process.cwd());
+	const BASE_PATH = env.VITE_BASE_PATH || "/codathon/";
 
-export default defineConfig({
-	plugins: [react()],
-	base: BASE_PATH,
+	return {
+		plugins: [react()],
+		base: BASE_PATH,
+	};
 });

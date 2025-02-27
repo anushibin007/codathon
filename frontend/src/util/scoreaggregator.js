@@ -33,12 +33,29 @@ const getWeeklySeries = async (selectedSeason, selectedWeek) => {
 	return weeklySeries;
 };
 
+const getCodesOfTheWeek = async (selectedSeason, selectedWeek) => {
+	if (!selectedSeason || !selectedWeek) {
+		return null;
+	}
+	const seasonscore = await getSeasonScore(selectedSeason);
+	const weeklyscore = seasonscore?.find((aWeek) => {
+		return aWeek.week === selectedWeek;
+	});
+	return weeklyscore?.["codes-of-the-week"];
+};
+
 const getSeasonScore = async (selectedSeason) => {
+	if (!selectedSeason) {
+		return null;
+	}
 	const seasonscore = await import(`../data/s${selectedSeason.id}-scores.json`);
 	return seasonscore?.default;
 };
 
 const getWeeklyScore = async (selectedSeason, selectedWeek) => {
+	if (!selectedSeason || !selectedWeek) {
+		return null;
+	}
 	const seasonscore = await getSeasonScore(selectedSeason);
 	const weeklyscore = seasonscore?.find((aWeek) => {
 		// console.log("aWeek.week", aWeek.week);
@@ -49,4 +66,4 @@ const getWeeklyScore = async (selectedSeason, selectedWeek) => {
 	return weeklyscore?.scores;
 };
 
-export { getParticipants, getWeeklySeries };
+export { getParticipants, getWeeklySeries, getCodesOfTheWeek };

@@ -14,6 +14,14 @@
 				"name": "Poko",
 				"score": [80, 50, 0, 20, 80, 100]
 			}
+		],
+		"codes-of-the-week": [
+			{
+				"id": 1,
+				"author": "Koko",
+				"imgUrl": "https://static.vecteezy.com/system/resources/previews/052/292/419/non_2x/a-cartoon-monkey-eating-a-banana-free-png.png",
+				"description": "Koko eating Bananas"
+			}
 		]
 	},
 	{

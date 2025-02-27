@@ -1,10 +1,11 @@
 import Chart from "react-apexcharts";
-import { getParticipants, getWeeklySeries } from "../../util/scoreaggregator";
+import { getCodesOfTheWeek, getParticipants, getWeeklySeries } from "../../util/scoreaggregator";
 import { useEffect, useState } from "react";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
 	const [categories, setCategories] = useState(undefined);
+	const [codesOfTheWeek, setCodesOfTheWeek] = useState(undefined);
 
 	useEffect(() => {
 		const fetchRequiredData = async () => {
@@ -12,14 +13,18 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			console.log({ tempSeries });
 			const tempCategories = await getParticipants(selectedSeason, selectedWeek);
 			console.log({ tempCategories });
+			const tempCodesOfTheWeek = await getCodesOfTheWeek(selectedSeason, selectedWeek);
+			console.log({ tempCodesOfTheWeek });
 			if (!tempSeries || !tempCategories) {
 				// reset the states if we got no data
 				setSeries(undefined);
 				setCategories(undefined);
+				setCodesOfTheWeek(undefined);
 				return;
 			}
 			setSeries(tempSeries);
 			setCategories(tempCategories);
+			setCodesOfTheWeek(tempCodesOfTheWeek);
 		};
 		fetchRequiredData();
 	}, [selectedSeason, selectedWeek]);
@@ -76,6 +81,18 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			{shouldRenderChart() && (
 				<>
 					<Chart options={options} series={series} type="bar" height={350} />
+					<>
+						<h2>Codes of the week</h2>
+						<ul>
+							{codesOfTheWeek?.map((code) => (
+								<li key={code.id}>
+									{code.author} - {code.description}
+									<br />
+									<img src={code.imgUrl} />
+								</li>
+							))}
+						</ul>
+					</>
 				</>
 			)}
 			{!shouldRenderChart() && (

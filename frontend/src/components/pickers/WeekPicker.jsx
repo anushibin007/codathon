@@ -3,6 +3,7 @@ import Button from "@mui/joy/Button";
 import ToggleButtonGroup from "@mui/joy/ToggleButtonGroup";
 import { useState } from "react";
 import { useEffect } from "react";
+import Typography from "@mui/joy/Typography";
 
 const WeekPicker = ({ selectedSeason, selectedWeek, setSelectedWeek }) => {
 	const numberOfWeeks =
@@ -31,6 +32,11 @@ const WeekPicker = ({ selectedSeason, selectedWeek, setSelectedWeek }) => {
 							</Button>
 						))}
 					</ToggleButtonGroup>
+				</>
+			)}
+			{(!selectedSeason || numberOfWeeks == 0) && (
+				<>
+					<Typography level="body-sm">Please pick a Season</Typography>
 				</>
 			)}
 		</>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import WeeklyLeaderboard from "./components/charts/WeeklyLeaderboard";
 import SeasonPicker from "./components/pickers/SeasonPicker";
 import Grid from "@mui/joy/Grid";
+import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
 
 function App() {
 	const [selectedSeason, setSelectedSeason] = useState(undefined);
@@ -9,7 +11,17 @@ function App() {
 
 	return (
 		<>
-			<Grid container sx={{ flexGrow: 1 }}>
+			<Grid
+				container
+				sx={{ flexGrow: 1, margin: 5 }}
+				justifyContent="center"
+				alignItems="center"
+			>
+				<Grid>
+					<Typography level="h2">&lt;codathon/&gt; Leaderboard</Typography>
+				</Grid>
+			</Grid>
+			<Grid container sx={{ flexGrow: 1, marginBottom: 3 }}>
 				<Grid xs={12}>
 					<SeasonPicker
 						selectedSeason={selectedSeason}
@@ -19,6 +31,7 @@ function App() {
 					/>
 				</Grid>
 			</Grid>
+			<Divider />
 			<Grid container sx={{ flexGrow: 1 }}>
 				<Grid xs={12}>
 					<WeeklyLeaderboard

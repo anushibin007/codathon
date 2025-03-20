@@ -30,9 +30,14 @@ const SeasonPicker = ({ selectedSeason, setSelectedSeason, selectedWeek, setSele
 	return (
 		<>
 			<form>
-				<Grid container spacing={2}>
+				<Grid
+					container
+					spacing={2}
+					sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5 }}
+					alignItems="center"
+				>
 					<Grid xs={1}>
-						<Typography>Pick a Season:</Typography>
+						<Typography>Season:</Typography>
 					</Grid>
 					<Grid>
 						<ToggleButtonGroup
@@ -50,9 +55,14 @@ const SeasonPicker = ({ selectedSeason, setSelectedSeason, selectedWeek, setSele
 						</ToggleButtonGroup>
 					</Grid>
 				</Grid>
-				<Grid container spacing={2}>
+				<Grid
+					container
+					spacing={2}
+					sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5 }}
+					alignItems="center"
+				>
 					<Grid xs={1}>
-						<Typography>Pick a Week:</Typography>
+						<Typography>Week:</Typography>
 					</Grid>
 					<Grid>
 						<WeekPicker

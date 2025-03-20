@@ -2,6 +2,7 @@ import Chart from "react-apexcharts";
 import { getCodesOfTheWeek, getParticipants, getWeeklySeries } from "../../util/scoreaggregator";
 import { useEffect, useState } from "react";
 import Grid from "@mui/joy/Grid";
+import Typography from "@mui/joy/Typography";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
@@ -45,10 +46,6 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			type: "bar",
 			stacked: true, // Enable stacking
 		},
-		title: {
-			text: `Season ${selectedSeason?.id} Week ${selectedWeek} Results`,
-		},
-
 		dataLabels: {
 			enabled: false,
 		},
@@ -81,12 +78,25 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 		<>
 			{shouldRenderChart() && (
 				<>
-					<Grid container sx={{ flexGrow: 1 }}>
+					<Grid
+						container
+						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 5 }}
+					>
+						<Grid xs={12}>
+							<Typography>
+								Season {selectedSeason?.id} Week {selectedWeek} Results
+							</Typography>
+						</Grid>
+					</Grid>
+					<Grid
+						container
+						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 1 }}
+					>
 						<Grid xs={12}>
 							<Chart options={options} series={series} type="bar" height={350} />
 						</Grid>
 					</Grid>
-					<Grid container sx={{ flexGrow: 1 }}>
+					<Grid container sx={{ flexGrow: 1, margin: 5 }}>
 						<Grid xs={12}>
 							<>
 								<h2>Codes of the week</h2>
@@ -106,7 +116,16 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 			)}
 			{!shouldRenderChart() && (
 				<>
-					<p>No data for selected season and week</p>
+					<Grid
+						container
+						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 5 }}
+					>
+						<Grid xs={12}>
+							<Typography level="body-sm">
+								No data for selected season and week
+							</Typography>
+						</Grid>
+					</Grid>
 				</>
 			)}
 		</>

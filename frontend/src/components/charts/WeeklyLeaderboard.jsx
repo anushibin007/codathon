@@ -97,14 +97,17 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 							<Chart options={options} series={series} type="bar" height={350} />
 						</Grid>
 					</Grid>
-					<Grid container sx={{ flexGrow: 1, margin: 5 }}>
+					<Grid container sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5 }}>
 						<Grid xs={12}>
 							<>
 								<Typography level="title-lg">Codes of the week</Typography>
 							</>
 						</Grid>
 					</Grid>
-					<Grid container sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5 }}>
+					<Grid
+						container
+						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 1 }}
+					>
 						{codesOfTheWeek?.map((code) => (
 							<Grid xs={12}>
 								<CodeOfTheWeekCard
@@ -115,6 +118,11 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 								/>
 							</Grid>
 						))}
+						{(!codesOfTheWeek || codesOfTheWeek.length === 0) && (
+							<Grid xs={12}>
+								<Typography level="body-sm">No highlights in this week</Typography>
+							</Grid>
+						)}
 					</Grid>
 				</>
 			)}

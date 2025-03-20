@@ -83,7 +83,7 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 5 }}
 					>
 						<Grid xs={12}>
-							<Typography>
+							<Typography level="title-lg">
 								Season {selectedSeason?.id} Week {selectedWeek} Results
 							</Typography>
 						</Grid>
@@ -99,7 +99,7 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 					<Grid container sx={{ flexGrow: 1, margin: 5 }}>
 						<Grid xs={12}>
 							<>
-								<h2>Codes of the week</h2>
+								<Typography level="title-lg">Codes of the week</Typography>
 								<ul>
 									{codesOfTheWeek?.map((code) => (
 										<li key={code.id}>

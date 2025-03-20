@@ -126,7 +126,7 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 					>
 						<Grid xs={12}>
 							<Typography level="body-sm">
-								No data for selected season and week
+								No data for the selected Season and Week
 							</Typography>
 						</Grid>
 					</Grid>

@@ -1,6 +1,7 @@
 import Chart from "react-apexcharts";
 import { getCodesOfTheWeek, getParticipants, getWeeklySeries } from "../../util/scoreaggregator";
 import { useEffect, useState } from "react";
+import Grid from "@mui/joy/Grid";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
@@ -80,19 +81,27 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 		<>
 			{shouldRenderChart() && (
 				<>
-					<Chart options={options} series={series} type="bar" height={350} />
-					<>
-						<h2>Codes of the week</h2>
-						<ul>
-							{codesOfTheWeek?.map((code) => (
-								<li key={code.id}>
-									{code.author} - {code.description}
-									<br />
-									<img src={code.imgUrl} />
-								</li>
-							))}
-						</ul>
-					</>
+					<Grid container sx={{ flexGrow: 1 }}>
+						<Grid xs={12}>
+							<Chart options={options} series={series} type="bar" height={350} />
+						</Grid>
+					</Grid>
+					<Grid container sx={{ flexGrow: 1 }}>
+						<Grid xs={12}>
+							<>
+								<h2>Codes of the week</h2>
+								<ul>
+									{codesOfTheWeek?.map((code) => (
+										<li key={code.id}>
+											{code.author} - {code.description}
+											<br />
+											<img src={code.imgUrl} />
+										</li>
+									))}
+								</ul>
+							</>
+						</Grid>
+					</Grid>
 				</>
 			)}
 			{!shouldRenderChart() && (

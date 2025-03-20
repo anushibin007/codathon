@@ -3,6 +3,7 @@ import { getCodesOfTheWeek, getParticipants, getWeeklySeries } from "../../util/
 import { useEffect, useState } from "react";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
+import CodeOfTheWeekCard from "./CodeOfTheWeekCard";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
@@ -100,17 +101,20 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 						<Grid xs={12}>
 							<>
 								<Typography level="title-lg">Codes of the week</Typography>
-								<ul>
-									{codesOfTheWeek?.map((code) => (
-										<li key={code.id}>
-											{code.author} - {code.description}
-											<br />
-											<img src={code.imgUrl} />
-										</li>
-									))}
-								</ul>
 							</>
 						</Grid>
+					</Grid>
+					<Grid container sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5 }}>
+						{codesOfTheWeek?.map((code) => (
+							<Grid xs={12}>
+								<CodeOfTheWeekCard
+									key={code.id}
+									author={code.author}
+									description={code.description}
+									imgsrc={code.imgUrl}
+								/>
+							</Grid>
+						))}
 					</Grid>
 				</>
 			)}

@@ -4,11 +4,7 @@ import { useEffect, useState } from "react";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import CodeOfTheWeekCard from "./CodeOfTheWeekCard";
-import {
-	getNumberOfWeeksInSeason,
-	getWholeSeasonParticipants,
-	getWholeSeasonScoreData,
-} from "../../util/seasonaggregator";
+import { getWholeSeasonParticipants, getWholeSeasonScoreData } from "../../util/seasonaggregator";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
@@ -44,7 +40,6 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const displayWholeSeasonScore = () => {
 		const tempSeries = getWholeSeasonScoreData(selectedSeason?.id);
 		console.log({ tempSeries });
-		const numberOfWeeks = getNumberOfWeeksInSeason(selectedSeason?.id);
 		const tempCategories = getWholeSeasonParticipants(selectedSeason?.id);
 		console.log({ tempCategories });
 		if (!tempSeries || !tempCategories) {

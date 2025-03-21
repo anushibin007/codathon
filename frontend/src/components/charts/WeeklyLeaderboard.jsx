@@ -109,9 +109,8 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 						sx={{ flexGrow: 1, marginLeft: 5, marginRight: 5, marginTop: 1 }}
 					>
 						{codesOfTheWeek?.map((code) => (
-							<Grid xs={12}>
+							<Grid key={code.id} xs={12}>
 								<CodeOfTheWeekCard
-									key={code.id}
 									author={code.author}
 									description={code.description}
 									imgsrc={code.imgUrl}

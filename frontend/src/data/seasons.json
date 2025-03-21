@@ -18,6 +18,20 @@
 				"id": 4
 			}
 		],
+		"seasonscores": [
+			{
+				"name": "Mako",
+				"score": [100, 100, 100, 100]
+			},
+			{
+				"name": "Koko",
+				"score": [100, 50, 20, 40]
+			},
+			{
+				"name": "Poko",
+				"score": [80, 50, 10, 20]
+			}
+		],
 		"isActive": true
 	}
 ]

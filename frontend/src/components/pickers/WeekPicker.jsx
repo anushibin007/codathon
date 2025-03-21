@@ -31,6 +31,7 @@ const WeekPicker = ({ selectedSeason, selectedWeek, setSelectedWeek }) => {
 								Week {aWeek + 1}
 							</Button>
 						))}
+						<Button value="seasonscores">Overall</Button>
 					</ToggleButtonGroup>
 				</>
 			)}

@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import CodeOfTheWeekCard from "./CodeOfTheWeekCard";
+import {
+	getNumberOfWeeksInSeason,
+	getWholeSeasonParticipants,
+	getWholeSeasonScoreData,
+} from "../../util/seasonaggregator";
 
 const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 	const [series, setSeries] = useState(undefined);
@@ -12,6 +17,10 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 
 	useEffect(() => {
 		const fetchRequiredData = async () => {
+			if (selectedWeek == "seasonscores") {
+				displayWholeSeasonScore();
+				return;
+			}
 			const tempSeries = await getWeeklySeries(selectedSeason, selectedWeek);
 			console.log({ tempSeries });
 			const tempCategories = await getParticipants(selectedSeason, selectedWeek);
@@ -31,6 +40,24 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 		};
 		fetchRequiredData();
 	}, [selectedSeason, selectedWeek]);
+
+	const displayWholeSeasonScore = () => {
+		const tempSeries = getWholeSeasonScoreData(selectedSeason?.id);
+		console.log({ tempSeries });
+		const numberOfWeeks = getNumberOfWeeksInSeason(selectedSeason?.id);
+		const tempCategories = getWholeSeasonParticipants(selectedSeason?.id);
+		console.log({ tempCategories });
+		if (!tempSeries || !tempCategories) {
+			// reset the states if we got no data
+			setSeries(undefined);
+			setCategories(undefined);
+			return;
+		}
+		setSeries(tempSeries);
+		setCategories(tempCategories);
+		// Reset codes of the week regardless when checking overall score
+		setCodesOfTheWeek(undefined);
+	};
 
 	// Calculate the total score for each person by summing the values in the series data
 	const totals =

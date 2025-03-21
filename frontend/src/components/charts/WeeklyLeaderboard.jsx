@@ -107,7 +107,9 @@ const WeeklyLeaderboard = ({ selectedSeason, selectedWeek }) => {
 					>
 						<Grid xs={12}>
 							<Typography level="title-lg">
-								Season {selectedSeason?.id} Week {selectedWeek} Results
+								{selectedWeek == "seasonscores"
+									? "Overall Season Scores"
+									: `Season ${selectedSeason?.id} Week ${selectedWeek} Results`}
 							</Typography>
 						</Grid>
 					</Grid>
